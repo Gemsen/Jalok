@@ -43,7 +43,7 @@ echo color("white","? Mau Klaim Voucher?(Y/N) ");
         echo color("yellow",".");
         sleep(10);
         }
-        $code1 = request1('/go-promotions/v1/promotions/enrollments', $token, '{"promo_code":"PENGENGOFOOD0508"}');
+        $code1 = request1('/go-promotions/v1/promotions/enrollments', $token, '{"promo_code":"PESANGOFOOD0508"}');
         $message = fetch_value($code1,'"message":"','"');
         echo "\n".color("green","+] Message: ".$message);
         sleep(3);
