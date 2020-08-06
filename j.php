@@ -1,35 +1,7 @@
 <?php
 date_default_timezone_set('Asia/Jakarta');
 include "function.php";
-echo "\e[93mMl;;;;;;;;;;;;;;;;,,;::::cccloooc:::cccllccc:;:::::::::::O\n";
-echo "M,                   .,:;;,''''..      .....             x\n";
-echo "M,         .         .lkOOxo;..         ....             x\n";
-echo "M'   .    ......    .okO0000Od:.         ...             x\n";
-echo "M'       .......    'llcldkko:;,.         .              x\n";
-echo "M'                  ..'',:o0ko:,;,.       .              d\n";
-echo "M'             .    ;::cdkxXK00OOOkc       ..            x\n";
-echo "M'             ..   .oxOOkdKKOO00Oxc.  ..  .             x\n";
-echo "M'            ...    .cdkx;;:lOOkxo;.. ..  ...           d\n";
-echo "M'           ,,... .  .:ooc:ccclooc'.. ..  ..            d\n";
-echo "M'        ..:;.:'  ..  .,:,';:cddl,.....                 o\n";
-echo "M'        ..;..'.    .   .;codxd;....     ..             d\n";
-echo "M'          ....'    ...    ...        . ..              d\n";
-echo "M'          ....                         .'.             d\n";
-echo "M'       'co',c,          .....          ':oolcc;,..     c\n";
-echo "M'    .'dOOko.           ';xOx...   .    .'dkOO000Okd,   c\n";
-echo "M;..  'dxxooc.    ..;:coxO0doOd;'..'...... .c00000OOkxc. :\n";
-echo "M;....oookOd;....ckOO00KKKKK0d0OOxclol;.....l000OOOOkxd: l\n";
-echo "M;.'.:dxO0x'':oOKKXKKKKKK00OOk0koloxkOkdloodxkxxxdkOkxdl.l\n";
-echo "M: .'cdO0OcxO0KKXXXXXXXXXXKKKO0k0000KKKKKKK000Odc:kOkxdl'c\n";
-echo "Mc. ,lk0OxkO000KXNNNNNNNXXKK0O00O00KKKKKKKKKKKK0OkkOOkdl;l\n";
-echo "M: .:dO0dxkkxldOKNWWNNNXXKK00O00O000KKXNNNNXXKOOOOkxOkxo:o\n";
-echo "M, 'lk0xloddlcox0KXXXXKK00OOkd0OxkOO00KXXNNXKOkolxxddkxo:x\n";
-echo "M: ;oO0d;:cloodxkOO00OOOkkxoclOOooxkOOOOOOOOOxoc;oolckxo:k\n";
-echo "M'.:xO0x,',;:clooddddddolc;;okkOkocodddddddddolccc:,,kxo:x\n";
-echo "M..lxO0Oc...'',,;;::::;,';lx00kxkxl,;::cc:cc::;;,'..;xxo:x\n";
-echo "Mo:okO00x,  ....'''..';lkO0KXXKKKK0Oo;'',,,,'''.....:ddo:d\n";
-echo "MKO0OOOOko' ...''.,:oxxxkkkO0KKKKKK0OOkl,.......   .cdxddx\n";
-echo "M0OkOkkkkdl;;:cdoloddxxxkkkO000OOkkkOkkkkxlcc::::::cdxxxxk\n";
+
 echo color("white","          [•]  Time  : ".date('[d-m-Y] [H:i:s]')."   \n");
 echo color("green","                      @Amartapura91 \n");
 echo color("white","* Token: ");
