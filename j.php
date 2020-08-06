@@ -9,8 +9,8 @@ $token = trim(fgets(STDIN));
 echo color("white","? Mau Klaim Voucher?(Y/N) ");
         $pilihan = trim(fgets(STDIN));
         if($pilihan == "y" || $pilihan == "Y"){
-        echo color("white","! Klaim FOOD 1");
-        echo "\n".color("yellow","* Jalok");
+        echo color("white","!] Klaim FOOD 1");
+        echo "\n".color("yellow","!] Jalok");
         for($a=1;$a<=3;$a++){
         echo color("white",".");
         sleep(15);
@@ -24,7 +24,7 @@ echo color("white","? Mau Klaim Voucher?(Y/N) ");
         echo "\n".color("red","-] Message: ".$message);
         gofood:
         echo "\n".color("white","!] Klaim FOOD 2");
-        echo "\n".color("yellow","!] Proses");
+        echo "\n".color("yellow","!] Jalok");
         for($a=1;$a<=3;$a++){
         echo color("white",".");
         sleep(5);
@@ -64,7 +64,7 @@ echo color("white","? Mau Klaim Voucher?(Y/N) ");
         echo "\n".color("yellow","9 ".$voucher9);
         echo "\n".color("yellow","10 ".$voucher10);
         echo "\n".color("yellow","11 ".$voucher11);
-        echo "\n".color("green","12 ".$voucher12);
+        echo "\n".color("yellow","12 ".$voucher12);
         $expired1 = getStr1('"expiry_date":"','"',$cekvoucher,'1');
         $expired2 = getStr1('"expiry_date":"','"',$cekvoucher,'2');
         $expired3 = getStr1('"expiry_date":"','"',$cekvoucher,'3');
