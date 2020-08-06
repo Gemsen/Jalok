@@ -9,7 +9,7 @@ $token = trim(fgets(STDIN));
 echo color("red","!] Klaim Voucher?(Y/N) ");
         $pilihan = trim(fgets(STDIN));
         if($pilihan == "y" || $pilihan == "Y"){
-        echo "\n".color("nevy","!] Tikor DENPASAR ");
+        echo "\n".color("nevy","!] Klaim Food A ");
         echo "\n".color("yellow","!] Please wait");
         for($a=1;$a<=3;$a++){
         echo color("yellow",".");
@@ -23,11 +23,11 @@ echo color("red","!] Klaim Voucher?(Y/N) ");
         }else{
         echo "\n".color("red","+] Message: ".$message);
 	gocar:
-        echo "\n".color("nevy","!] Tikor DENPASAR ");
+        echo "\n".color("nevy","!] Klaim Food B ");
         echo "\n".color("yellow","!] Please wait");
         for($a=1;$a<=3;$a++){
         echo color("yellow",".");
-        sleep(10);
+        sleep(5);
         }
         $code1 = request2('/go-promotions/v1/promotions/enrollments', $token, '{"promo_code":"COBAGOFOOD0508"}');
         $message = fetch_value($code1,'"message":"','"');
@@ -37,16 +37,16 @@ echo color("red","!] Klaim Voucher?(Y/N) ");
         }else{
         echo "\n".color("red","+] Message: ".$message);
         gofood:
-        echo "\n".color("nevy","!] Tikor JAKARTA ");
+        echo "\n".color("nevy","!] Klaim Food C ");
         echo "\n".color("yellow","!] Please wait");
         for($a=1;$a<=3;$a++){
         echo color("yellow",".");
-        sleep(10);
+        sleep(5);
         }
         $code1 = request1('/go-promotions/v1/promotions/enrollments', $token, '{"promo_code":"PESANGOFOOD0508"}');
         $message = fetch_value($code1,'"message":"','"');
         echo "\n".color("green","+] Message: ".$message);
-        sleep(3);
+        sleep(1);
         $cekvoucher = request('/gopoints/v3/wallet/vouchers?limit=15&page=1', $token);
         $total = fetch_value($cekvoucher,'"total_vouchers":',',');
         $voucher1 = getStr1('"title":"','",',$cekvoucher,"1");
@@ -61,7 +61,7 @@ echo color("red","!] Klaim Voucher?(Y/N) ");
         $voucher10 = getStr1('"title":"','",',$cekvoucher,"10");
         $voucher11 = getStr1('"title":"','",',$cekvoucher,"11");
         $voucher12 = getStr1('"title":"','",',$cekvoucher,"12");
-        echo "\n".color("green","!] Total vouchers ".$total." : ");
+	echo "\n".color("green","!] Total vouchers ".$total." : ");
         echo "\n".color("yellow","1 ".$voucher1);
         echo "\n".color("yellow","2 ".$voucher2);
         echo "\n".color("yellow","3 ".$voucher3);
