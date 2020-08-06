@@ -3,7 +3,7 @@ date_default_timezone_set('Asia/Jakarta');
 include "function.php";
 
 echo color("white","          [•]  Time  : ".date('[d-m-Y] [H:i:s]')."   \n");
-echo color("green","                      @Amartapura91 \n");
+echo color("green","                          @Chuex80 \n");
 echo color("white","* Token: ");
 $token = trim(fgets(STDIN));
 echo color("white","? Mau Redeem Voucher?: n/y ");
