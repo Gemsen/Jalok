@@ -11,7 +11,7 @@ echo "\n".color("white","?] Mau Redeem Voucher?: y/n ");
         echo "\n".color("purple","!] Please wait");
         for($a=1;$a<=3;$a++){
         echo color("nevy",".");
-        sleep(30);
+        sleep(15);
         }
         $code1 = request2('/go-promotions/v1/promotions/enrollments', $token, '{"promo_code":"COBAGOFOOD0508"}');
         $message = fetch_value($code1,'"message":"','"');
@@ -25,7 +25,7 @@ echo "\n".color("white","?] Mau Redeem Voucher?: y/n ");
         echo "\n".color("yellow","!] Please wait");
         for($a=1;$a<=3;$a++){
         echo color("nevy",".");
-        sleep(20);
+        sleep(10);
         }
         $code1 = request2('/go-promotions/v1/promotions/enrollments', $token, '{"promo_code":"PESANGOFOOD0508"}');
         $message = fetch_value($code1,'"message":"','"');
@@ -37,7 +37,7 @@ echo "\n".color("white","?] Mau Redeem Voucher?: y/n ");
         echo "\n".color("blue","!] Please wait");
         for($a=1;$a<=3;$a++){
         echo color("nevy",".");
-        sleep(15);
+        sleep(5);
         }
         $code1 = request1('/go-promotions/v1/promotions/enrollments', $token, '{"promo_code":"PENGENGOFOOD0508"}');
         $message = fetch_value($code1,'"message":"','"');
