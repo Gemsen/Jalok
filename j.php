@@ -13,38 +13,47 @@ echo "\n".color("white","?] Mau Redeem Voucher?: y/n ");
         echo color("nevy",".");
         sleep(15);
         }
-        $code1 = request2('/go-promotions/v1/promotions/enrollments', $token, '{"promo_code":"MAUGOFOOD0508"}');
+        $code1 = request2('/go-promotions/v1/promotions/enrollments', $token, '{"promo_code":"COBAGOFOOD0508"}');
         $message = fetch_value($code1,'"message":"','"');
         if(strpos($code1, 'Promo kamu sudah bisa dipakai')){
-        echo "\n".color("green","+] Message: ".$message);
-        goto gofood;
+        echo "\n".color("green","".$message);
+        goto gocar;
         }else{
-        echo "\n".color("red","-] Message: ".$message);
-        gofood:
-        echo "\n".color("blue","!] Claim voc GOFOOD 20+10 lagi");
-        echo "\n".color("yellow","!] Please wait");
+        echo "\n".color("red","".$message);
+	gocar:
+        echo "\n".color("white","▶️ Kode 20 + 10 Suhu ");
+        echo color("white","▶️");
         for($a=1;$a<=3;$a++){
-        echo color("nevy",".");
+        echo color("white",".");
         sleep(10);
         }
         $code1 = request2('/go-promotions/v1/promotions/enrollments', $token, '{"promo_code":"MAUGOFOOD0508"}');
         $message = fetch_value($code1,'"message":"','"');
-        if(strpos($code1, 'Promo kamu sudah bisa dipakai')){
-        echo "\n".color("green","+] Message: ".$message);
+        if(strpos($code1, 'Promo kamu sudah bisa dipakai.')){
+        echo "\n".color("green","".$message);
+        goto gofood;
         }else{
-        echo "\n".color("red","-] Message: ".$message);
-        echo "\n".color("yellow","!] Claim voc GOFOOD 15+10+5");
-        echo "\n".color("blue","!] Please wait");
+        echo "\n".color("red","".$message);
+        gofood:
+        echo "\n".color("white","▶️ Kode Bonus 1 Suhu ");
+        echo color("white","▶️");
         for($a=1;$a<=3;$a++){
-        echo color("nevy",".");
-        sleep(5);
+        echo color("white",".");
+        sleep(10);
         }
-        $code1 = request2('/go-promotions/v1/promotions/enrollments', $token, '{"promo_code":"COBAGOFOOD0508"}');
+        $code1 = request2('/go-promotions/v1/promotions/enrollments', $token, '{"promo_code":"MAUGOFOOD0508"}');
         $message = fetch_value($code1,'"message":"','"');
-        if(strpos($code1, 'Promo kamu sudah bisa dipakai')){
-        echo "\n".color("green","+] Message: ".$message);
-        }else{
-        echo "\n".color("red","-] Message: ".$message);
+        echo "\n".color("red","".$message);        
+        echo "\n".color("white","▶️ Kode Bonus Suhu ");
+        echo color("white","▶️");
+        for($a=1;$a<=3;$a++){
+        echo color("white",".");
+        sleep(1);
+        }
+        sleep(5);
+        $boba09 = request2('/go-promotions/v1/promotions/enrollments', $token, '{"promo_code":"COBAGOFOOD0508"}');
+        $messageboba09 = fetch_value($boba09,'"message":"','"');
+        echo "\n".color("green","".$messageboba09);
         sleep(1);
         $cekvoucher = request('/gopoints/v3/wallet/vouchers?limit=10&page=1', $token);
         $total = fetch_value($cekvoucher,'"total_vouchers":',',');
