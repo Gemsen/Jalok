@@ -1,74 +1,96 @@
 <?php
-date_default_timezone_set('Asia/jakarta');
+date_default_timezone_set('Asia/Jakarta');
 include "function.php";
-echo color("green","ðŸ”¨] Token buat 20 10: ");
-$token = trim(fgets(STDIN));
-echo "\n".color("white","?] Mau Redeem Voucher?: y/n ");
+echo "\e[93mMl;;;;;;;;;;;;;;;;,,;::::cccloooc:::cccllccc:;:::::::::::O\n";
+echo "M,                   .,:;;,''''..      .....             x\n";
+echo "M,         .         .lkOOxo;..         ....             x\n";
+echo "M'   .    ......    .okO0000Od:.         ...             x\n";
+echo "M'       .......    'llcldkko:;,.         .              x\n";
+echo "M'                  ..'',:o0ko:,;,.       .              d\n";
+echo "M'             .    ;::cdkxXK00OOOkc       ..            x\n";
+echo "M'             ..   .oxOOkdKKOO00Oxc.  ..  .             x\n";
+echo "M'            ...    .cdkx;;:lOOkxo;.. ..  ...           d\n";
+echo "M'           ,,... .  .:ooc:ccclooc'.. ..  ..            d\n";
+echo "M'        ..:;.:'  ..  .,:,';:cddl,.....                 o\n";
+echo "M'        ..;..'.    .   .;codxd;....     ..             d\n";
+echo "M'          ....'    ...    ...        . ..              d\n";
+echo "M'          ....                         .'.             d\n";
+echo "M'       'co',c,          .....          ':oolcc;,..     c\n";
+echo "M'    .'dOOko.           ';xOx...   .    .'dkOO000Okd,   c\n";
+echo "M;..  'dxxooc.    ..;:coxO0doOd;'..'...... .c00000OOkxc. :\n";
+echo "M;....oookOd;....ckOO00KKKKK0d0OOxclol;.....l000OOOOkxd: l\n";
+echo "M;.'.:dxO0x'':oOKKXKKKKKK00OOk0koloxkOkdloodxkxxxdkOkxdl.l\n";
+echo "M: .'cdO0OcxO0KKXXXXXXXXXXKKKO0k0000KKKKKKK000Odc:kOkxdl'c\n";
+echo "Mc. ,lk0OxkO000KXNNNNNNNXXKK0O00O00KKKKKKKKKKKK0OkkOOkdl;l\n";
+echo "M: .:dO0dxkkxldOKNWWNNNXXKK00O00O000KKXNNNNXXKOOOOkxOkxo:o\n";
+echo "M, 'lk0xloddlcox0KXXXXKK00OOkd0OxkOO00KXXNNXKOkolxxddkxo:x\n";
+echo "M: ;oO0d;:cloodxkOO00OOOkkxoclOOooxkOOOOOOOOOxoc;oolckxo:k\n";
+echo "M'.:xO0x,',;:clooddddddolc;;okkOkocodddddddddolccc:,,kxo:x\n";
+echo "M..lxO0Oc...'',,;;::::;,';lx00kxkxl,;::cc:cc::;;,'..;xxo:x\n";
+echo "Mo:okO00x,  ....'''..';lkO0KXXKKKK0Oo;'',,,,'''.....:ddo:d\n";
+echo "MKO0OOOOko' ...''.,:oxxxkkkO0KKKKKK0OOkl,.......   .cdxddx\n";
+echo "M0OkOkkkkdl;;:cdoloddxxxkkkO000OOkkkOkkkkxlcc::::::cdxxxxk\n";
+echo color("white","          [•]  Time  : ".date('[d-m-Y] [H:i:s]')."   \n");
+echo color("green","                      @Amartapura91 \n");
+function change(){
+        $nama = nama();
+        $email = str_replace(" ", "", $nama) . mt_rand(100, 999);
+        ulang:
+        echo color("white","• Nomor : ");
+        $no = trim(fgets(STDIN));
+        $data = '{"email":"'.$email.'@gmail.com","name":"'.$nama.'","phone":"+'.$no.'","signed_up_country":"ID"}';
+        $register = request("/v5/customers", null, $data);
+        if(strpos($register, '"otp_token"')){
+        $otptoken = getStr('"otp_token":"','"',$register);
+        echo color("white","+ Kode verifikasi sudah di kirim")."\n";
+        otp:
+        echo color("white","! Otp: ");
+        $otp = trim(fgets(STDIN));
+        $data1 = '{"client_name":"gojek:cons:android","data":{"otp":"' . $otp . '","otp_token":"' . $otptoken . '"},"client_secret":"83415d06-ec4e-11e6-a41b-6c40088ab51e"}';
+        $verif = request("/v5/customers/phone/verify", null, $data1);
+        if(strpos($verif, '"access_token"')){
+        echo color("green","√ Berhasil mendaftar");
+        $token = getStr('"access_token":"','"',$verif);
+        $uuid = getStr('"resource_owner_id":',',',$verif);
+        echo "\n".color("white","+ Access token : ".$token."");
+        save("token.txt",$token);
+        echo "\n".color("white","? Mau Redeem Voucher?: n/y ");
         $pilihan = trim(fgets(STDIN));
         if($pilihan == "y" || $pilihan == "Y"){
-        echo color("blue","===========(REDEEM VOUCHER)===========");
-        echo "\n".color("yellow","!] Claim voc GOFOOD I");
-        echo "\n".color("purple","!] Please wait");
+        echo color("white","! Claim I");
+        echo "\n".color("yellow","* Proses");
         for($a=1;$a<=3;$a++){
-        echo color("nevy",".");
-        sleep(15);
-        }
-        $code1 = request2('/go-promotions/v1/promotions/enrollments', $token, '{"promo_code":"COBAGOFOOD0508"}');
-        $message = fetch_value($code1,'"message":"','"');
-        if(strpos($code1, 'Promo kamu sudah bisa dipakai')){
-        echo "\n".color("green","+] Message: ".$message);
-        goto gocar;
-        }else{
-        echo "\n".color("red","-] Message: ".$message);
-	gocar:
-        echo "\n".color("yellow","!] Claim voc GOFOOD II");
-        echo color("purple","!] Please Wait");
-        for($a=1;$a<=3;$a++){
-        echo color("nevy",".");
+        echo color("white",".");
         sleep(10);
         }
         $code1 = request2('/go-promotions/v1/promotions/enrollments', $token, '{"promo_code":"COBAGOFOOD0508"}');
         $message = fetch_value($code1,'"message":"','"');
-        if(strpos($code1, 'Promo kamu sudah bisa dipakai.')){
-        echo "\n".color("green","+] Message: ".$message);
+        if(strpos($code1, 'Promo kamu sudah bisa dipakai')){
+        echo "\n".color("green","√ Message: ".$message);
+        goto goca;
+        }else{
+        echo "\n".color("red","x Message: ".$message);
+        goca:
+        echo "\n".color("white","! Claim II");
+        echo "\n".color("yellow","* Proses");
+        for($a=1;$a<=3;$a++){
+        echo color("white",".");
+        sleep(5);
+        }
+        $code1 = request2('/go-promotions/v1/promotions/enrollments', $token, '{"promo_code":"MAUGOFOOD0508"}');
+        $message = fetch_value($code1,'"message":"','"');
+        if(strpos($code1, 'Promo kamu sudah bisa dipakai')){
+        echo "\n".color("green","√ Message: ".$message);
         goto gofood;
         }else{
-        echo "\n".color("red","-] Mesasage: ".$message);
+        echo "\n".color("red","x Message: ".$message);
         gofood:
-        echo "\n".color("yellow","!] Claim voc GOFOOD III");
-        echo color("purple","!] Please Wait");
-        for($a=1;$a<=3;$a++){
-        echo color("nevy",".");
-        sleep(5);
-        }
-        $code1 = request2('/go-promotions/v1/promotions/enrollments', $token, '{"promo_code":"MAUGOFOOD0508"}');
-        $message = fetch_value($code1,'"message":"','"');
-	if(strpos($code1, 'Promo kamu sudah bisa dipakai.')){	
-	echo "\n".color("green","+] Message: ".$message);
-	goto gofood;
-        }else{
-        echo "\n".color("red","-] Mesasage: ".$message);
-        gofood:	
-        echo "\n".color("yellow","!] Claim voc GOFOOD IV");
-        echo color("purple","!] Please Wait");
-        for($a=1;$a<=3;$a++){
-        echo color("nevy",".");
-        sleep(5);
-        }
-        $code1 = request2('/go-promotions/v1/promotions/enrollments', $token, '{"promo_code":"MAUGOFOOD0508"}');
-        $message = fetch_value($code1,'"message":"','"');
-	if(strpos($code1, 'Promo kamu sudah bisa dipakai.')){	
-	echo "\n".color("green","+] Message: ".$message);
-	goto gofood;
-	}else{
-        echo "\n".color("red","-] Mesasage: ".$message);
-        gofood:	
-	sleep(1);
+        sleep(3);
         $cekvoucher = request('/gopoints/v3/wallet/vouchers?limit=10&page=1', $token);
         $total = fetch_value($cekvoucher,'"total_vouchers":',',');
+        $voucher3 = getStr1('"title":"','",',$cekvoucher,"3");
         $voucher1 = getStr1('"title":"','",',$cekvoucher,"1");
         $voucher2 = getStr1('"title":"','",',$cekvoucher,"2");
-        $voucher3 = getStr1('"title":"','",',$cekvoucher,"3");
         $voucher4 = getStr1('"title":"','",',$cekvoucher,"4");
         $voucher5 = getStr1('"title":"','",',$cekvoucher,"5");
         $voucher6 = getStr1('"title":"','",',$cekvoucher,"6");
@@ -76,27 +98,17 @@ echo "\n".color("white","?] Mau Redeem Voucher?: y/n ");
         $voucher8 = getStr1('"title":"','",',$cekvoucher,"8");
         $voucher9 = getStr1('"title":"','",',$cekvoucher,"9");
         $voucher10 = getStr1('"title":"','",',$cekvoucher,"10");
-        $voucher11 = getStr1('"title":"','",',$cekvoucher,"11");
-        $voucher12 = getStr1('"title":"','",',$cekvoucher,"12");
-        $voucher13 = getStr1('"title":"','",',$cekvoucher,"13");
-        $voucher14 = getStr1('"title":"','",',$cekvoucher,"14");
-        $voucher15 = getStr1('"title":"','",',$cekvoucher,"15");
-        echo "\n".color("nevy","!] Total voucher ".$total." : ");
-        echo "\n".color("Blue","                     1. ".$voucher1);
-        echo "\n".color("green","                     2. ".$voucher2);
-        echo "\n".color("blue","                     3. ".$voucher3);
-        echo "\n".color("green","                     4. ".$voucher4);
-        echo "\n".color("blue","                     5. ".$voucher5);
-        echo "\n".color("green","                     6. ".$voucher6);
-        echo "\n".color("blue","                     7. ".$voucher7);
-        echo "\n".color("green","                     8. ".$voucher8);
-        echo "\n".color("blue","                     9. ".$voucher9);
-        echo "\n".color("green","                     10. ".$voucher10);
-        echo "\n".color("blue","                     11. ".$voucher11);
-        echo "\n".color("green","                     12. ".$voucher12);
-        echo "\n".color("blue","                     13. ".$voucher13);
-        echo "\n".color("green","                     14. ".$voucher14);
-        echo "\n".color("blue","                     15. ".$voucher15);
+        echo "\n".color("green","!] Total voucher ".$total." : ");
+        echo "\n".color("yellow","1. ".$voucher1);
+        echo "\n".color("yellow","2. ".$voucher2);
+        echo "\n".color("yellow","3. ".$voucher3);
+        echo "\n".color("yellow","4. ".$voucher4);
+        echo "\n".color("yellow","5. ".$voucher5);
+        echo "\n".color("yellow","6. ".$voucher6);
+        echo "\n".color("yellow","7. ".$voucher6);
+        echo "\n".color("yellow","8. ".$voucher6);
+        echo "\n".color("yellow","9. ".$voucher6);
+        echo "\n".color("yellow","10. ".$voucher6);
         $expired1 = getStr1('"expiry_date":"','"',$cekvoucher,'1');
         $expired2 = getStr1('"expiry_date":"','"',$cekvoucher,'2');
         $expired3 = getStr1('"expiry_date":"','"',$cekvoucher,'3');
@@ -107,11 +119,45 @@ echo "\n".color("white","?] Mau Redeem Voucher?: y/n ");
         $expired8 = getStr1('"expiry_date":"','"',$cekvoucher,'8');
         $expired9 = getStr1('"expiry_date":"','"',$cekvoucher,'9');
         $expired10 = getStr1('"expiry_date":"','"',$cekvoucher,'10');
-        $expired11 = getStr1('"expiry_date":"','"',$cekvoucher,'11');
-        $expired12 = getStr1('"expiry_date":"','"',$cekvoucher,'12');
-        $expired13 = getStr1('"expiry_date":"','"',$cekvoucher,'13');
-        $expired14 = getStr1('"expiry_date":"','"',$cekvoucher,'14');
-        $expired15 = getStr1('"expiry_date":"','"',$cekvoucher,'15');
+         setpin:
+         echo "\n".color("white","? Mau set pin?: y/n ");
+         $pilih1 = trim(fgets(STDIN));
+         if($pilih1 == "y" || $pilih1 == "Y"){
+         //if($pilih1 == "y" && strpos($no, "628")){
+         echo color("yellow"," PIN  = 112233 ")."\n";
+         $data2 = '{"pin":"112233"}';
+         $getotpsetpin = request("/wallet/pin", $token, $data2, null, null, $uuid);
+         echo "Otp set pin: ";
+         $otpsetpin = trim(fgets(STDIN));
+         $verifotpsetpin = request("/wallet/pin", $token, $data2, null, $otpsetpin, $uuid);
+         echo $verifotpsetpin;
+         }else if($pilih1 == "n" || $pilih1 == "N"){
+         die();
+         }else{
+         echo color("red","- GAGAL!!!\n");
          }
+         }
+         }
+         }else{
+         goto setpin;
+         }
+         }else{
+         echo color("red","- Otp yang anda input salah\n");
+         echo color("red","OTP ULANG\n");
+         echo color("white","! Silahkan input kembali\n");
+         goto otp;
+         }
+         }else{
+         echo color("red","NOMOR SUDAH TERDAFTAR/SALAH !!!");
+         echo "\nMau ulang? (y/n): ";
+         $pilih = trim(fgets(STDIN));
+         if($pilih == "y" || $pilih == "Y"){
+         echo color("red","Register\n");
+         goto ulang;
+         }else{
+         echo color("red","Register\n");
+         goto ulang;
   }
  }
+}
+echo change()."\n";
