@@ -34,10 +34,10 @@ echo color("white","          [•]  Time  : ".date('[d-m-Y] [H:i:s]')."   \n");
 echo color("green","                         @chuex80 \n");
 echo color("white","* Token: ");
 $token = trim(fgets(STDIN));
-echo color("white","? Mau Redeem Voucher?: Y/N ");
+echo color("nevy","? Mau Redeem Voucher?(Y/N): ");
         $pilihan = trim(fgets(STDIN));
         if($pilihan == "y" || $pilihan == "Y"){
-        echo color("white","! Claim I");
+        echo color("purple","!] Claim I");
         echo "\n".color("yellow","* Proses");
         for($a=1;$a<=3;$a++){
         echo color("white",".");
@@ -46,12 +46,12 @@ echo color("white","? Mau Redeem Voucher?: Y/N ");
         $code1 = request2('/go-promotions/v1/promotions/enrollments', $token, '{"promo_code":"COBAGOFOOD0508"}');
         $message = fetch_value($code1,'"message":"','"');
         if(strpos($code1, 'Promo kamu sudah bisa dipakai')){
-        echo "\n".color("green","√ Message: ".$message);
+        echo "\n".color("green","+] Message: ".$message);
         goto gofood;
         }else{
-        echo "\n".color("red","x Message: ".$message);
+        echo "\n".color("red","-] Message: ".$message);
         gofood:
-        echo "\n".color("white","! Claim II");
+        echo "\n".color("purple","!] Claim II");
         echo "\n".color("yellow","* Proses");
         for($a=1;$a<=3;$a++){
         echo color("white",".");
@@ -80,19 +80,19 @@ echo color("white","? Mau Redeem Voucher?: Y/N ");
         $voucher10 = getStr1('"title":"','",',$cekvoucher,"10");
         $voucher11 = getStr1('"title":"','",',$cekvoucher,"11");
         $voucher12 = getStr1('"title":"','",',$cekvoucher,"12");
-        echo "\n".color("green","!] Total voucher ".$total." : ");
-        echo "\n".color("yellow","1 ".$voucher1);
-        echo "\n".color("yellow","2 ".$voucher2);
-        echo "\n".color("yellow","3 ".$voucher3);
-        echo "\n".color("yellow","4 ".$voucher4);
-        echo "\n".color("yellow","5 ".$voucher5);
-        echo "\n".color("yellow","6 ".$voucher6);
-        echo "\n".color("yellow","7 ".$voucher7);
-        echo "\n".color("yellow","8 ".$voucher8);
-        echo "\n".color("yellow","9 ".$voucher9);
-        echo "\n".color("yellow","10 ".$voucher10);
-        echo "\n".color("yellow","11 ".$voucher11);
-        echo "\n".color("green","12 ".$voucher12);
+        echo "\n".color("green","!] Total vouchers ".$total." : ");
+        echo "\n".color("yellow","1. ".$voucher1);
+        echo "\n".color("yellow","2. ".$voucher2);
+        echo "\n".color("yellow","3. ".$voucher3);
+        echo "\n".color("yellow","4. ".$voucher4);
+        echo "\n".color("yellow","5. ".$voucher5);
+        echo "\n".color("yellow","6. ".$voucher6);
+        echo "\n".color("yellow","7. ".$voucher7);
+        echo "\n".color("yellow","8. ".$voucher8);
+        echo "\n".color("yellow","9. ".$voucher9);
+        echo "\n".color("yellow","10. ".$voucher10);
+        echo "\n".color("yellow","11. ".$voucher11);
+        echo "\n".color("yellow","12. ".$voucher12);
         $expired1 = getStr1('"expiry_date":"','"',$cekvoucher,'1');
         $expired2 = getStr1('"expiry_date":"','"',$cekvoucher,'2');
         $expired3 = getStr1('"expiry_date":"','"',$cekvoucher,'3');
@@ -106,7 +106,7 @@ echo color("white","? Mau Redeem Voucher?: Y/N ");
         $expired11 = getStr1('"expiry_date":"','"',$cekvoucher,'11');
         $expired12 = getStr1('"expiry_date":"','"',$cekvoucher,'12');
         setpin:
-         echo "\n".color("white","? Mau set pin?: y/n ");
+         echo "\n".color("nevy","? Mau set pin?(Y/N): ");
          $pilih1 = trim(fgets(STDIN));
          if($pilih1 == "y" || $pilih1 == "Y"){
          //if($pilih1 == "y" && strpos($no, "628")){
