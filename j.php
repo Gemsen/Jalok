@@ -33,30 +33,9 @@ echo "M0OkOkkkkdl;;:cdoloddxxxkkkO000OOkkkOkkkkxlcc::::::cdxxxxk\n";
 echo color("white","          [•]  Time  : ".date('[d-m-Y] [H:i:s]')."   \n");
 echo color("green","                      @Amartapura91 \n");
 function change(){
-        $nama = nama();
-        $email = str_replace(" ", "", $nama) . mt_rand(100, 999);
-        ulang:
-        echo color("white","• Nomor : ");
-        $no = trim(fgets(STDIN));
-        $data = '{"email":"'.$email.'@gmail.com","name":"'.$nama.'","phone":"+'.$no.'","signed_up_country":"ID"}';
-        $register = request("/v5/customers", null, $data);
-        if(strpos($register, '"otp_token"')){
-        $otptoken = getStr('"otp_token":"','"',$register);
-        echo color("white","+ Kode verifikasi sudah di kirim")."\n";
-        otp:
-        echo color("white","! Otp: ");
-        $otp = trim(fgets(STDIN));
-        $data1 = '{"client_name":"gojek:cons:android","data":{"otp":"' . $otp . '","otp_token":"' . $otptoken . '"},"client_secret":"83415d06-ec4e-11e6-a41b-6c40088ab51e"}';
-        $verif = request("/v5/customers/phone/verify", null, $data1);
-        if(strpos($verif, '"access_token"')){
-        echo color("green","√ Berhasil mendaftar");
-        $token = getStr('"access_token":"','"',$verif);
-        $uuid = getStr('"resource_owner_id":',',',$verif);
-        echo "\n".color("white","+ Access token : ".$token."");
-        save("token.txt",$token);
-        echo "\n".color("white","? Mau Redeem Voucher?: n/y ");
-        $pilihan = trim(fgets(STDIN));
-        if($pilihan == "y" || $pilihan == "Y"){
+echo "\n\e[7m\e[31m                 AUTO  REDEEM                  \e[0m\n";
+echo "\e[7m\e[36m\e[1m▶️ Token : \e[0m";
+$token = trim(fgets(STDIN));       
         echo color("white","! Claim I");
         echo "\n".color("yellow","* Proses");
         for($a=1;$a<=3;$a++){
